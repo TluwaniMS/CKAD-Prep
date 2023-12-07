@@ -36,15 +36,15 @@ This policy allows you to define how resilient your application should be in cas
 
 There are three main values for `restartPolicy`:
 
-# 1. Always: 
+##### 1. Always: 
 
 This setting instructs Kubernetes to always restart the container when it terminates, regardless of the exit code or reason for termination.
 
-# 2. OnFailure: 
+##### 2. OnFailure: 
 
 With this setting, Kubernetes restarts the container only if it terminates with an error (non-zero exit code).
 
-# 3. Never: 
+##### 3. Never: 
 
 Here, Kubernetes does not restart the container after it terminates, regardless of the exit code or reason for termination. 
 
