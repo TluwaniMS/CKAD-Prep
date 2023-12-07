@@ -28,6 +28,29 @@ spec:
 
 ```
 
+# Cronjob Manifest Example
+
+```
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+    name: hello-world-cron-job
+spec:
+    schedule: "*/1 * * * *"
+    jobTemplate:
+        spec:
+            template:
+                containers:
+                - name: hello-world-printer
+                image: busybox:stable
+                command: ["echo", "Hello world from the Cronjob!"]
+                restartPolicy: Never
+            backOffLimit: 4
+            activeDeadlineSeconds: 10
+
+```
+
 # Restart-policy:
 
 The `restartPolicy` is a setting defined within a pod's configuration that specifies the desired behavior for restarting containers within that pod. It determines what action Kubernetes should take if a container within the pod terminates, either due to an error, completion of its task, or any other reason.
@@ -56,3 +79,16 @@ In Kubernetes, `backoffLimit` refers to the maximum number of times a controller
 # activeDeadlineSeconds:
 
 The `activeDeadlineSeconds` in Kubernetes is a parameter used within a pod specification to set a maximum amount of time for the pod to execute its primary process. It defines a deadline for the pod's execution duration. If the pod doesn't complete within this timeframe, Kubernetes will mark it as failed and terminate its execution. This parameter is useful for ensuring that pods don't consume resources indefinitely if something goes wrong or if a specific time frame for processing is necessary.
+
+# schedule:
+
+The schedule field in a CronJob determines the frequency and timing of when a particular job or set of tasks should be executed.
+
+The schedule field uses a cron expression to define this timing. In the provided example, "*/1 * * * *" is the cron expression. Each asterisk (*) represents a different time unit:
+
+- The first asterisk represents minutes (runs every minute in this case).
+- The second asterisk represents hours.
+- The third asterisk represents days of the month.
+- The fourth asterisk represents months.
+- The fifth asterisk represents days of the week.
+- So, "*/1 * * * *" means "run this job every minute."
