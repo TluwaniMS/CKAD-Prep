@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: back-off-limit-job
+spec:
+  template:
+    spec:
+      containers:
+        - name: back-off-limiter
+          image: busybox:stable
+          command: ['/bin/sh', '-c']
+          args:
+            - echo "Hello from the back-off-limiter :)!! I'll be crashing now";
+              ech "deliberate crash";
+      restartPolicy: Never
+  backOffLimit: 4
+  activeDeadLineSeconds: 10

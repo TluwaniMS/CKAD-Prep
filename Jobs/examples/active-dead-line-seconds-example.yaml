@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: hello-world-job
+  name: deadline-printer-job
 spec:
   template:
     spec:
@@ -11,7 +11,7 @@ spec:
           command: ['/bin/sh', '-c']
           args:
             - echo "Hello from the deadline printer :)!! I'll be be sleeping for 12 seconds now";
-              sleep 12
+              sleep 12;
       restartPolicy: Never
   backOffLimit: 4
   activeDeadLineSeconds: 10
