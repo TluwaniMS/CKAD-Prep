@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hello-world-job
+spec:
+  template:
+    spec:
+      containers:
+        - name: deadline-printer
+          image: busybox:stable
+          command: ['/bin/sh', '-c']
+          args:
+            - echo "Hello from the deadline printer :)!! I'll be be sleeping for 12 seconds now";
+              sleep 12
+      restartPolicy: Never
+  backOffLimit: 4
+  activeDeadLineSeconds: 10
