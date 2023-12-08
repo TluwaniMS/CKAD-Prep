@@ -24,3 +24,21 @@ Manifest example 2
 * `FileOrCreate` – Attaches a file from the host and generates it if it's not present.
 
 * `emptyDir` volumes offer temporary storage utilizing the host file system, and they are deleted when the Pod is removed.
+
+# Persistent Volumes
+
+a Kubernetes persistent volume is like a storage space that stays around even if a Pod using that space is deleted. 
+It's a way to store data separately from the containers so that even if the containers restart or are replaced, the data remains accessible.
+This persistent volume can be attached or detached from different Pods as needed.
+
+# Persistent Volume Claim
+
+Think of a Kubernetes persistent volume claim as a request for storage by a pod. It's like asking Kubernetes to provide a specific amount and type of storage (like a hard drive) that your application running in the pod needs. Once requested and approved, Kubernetes ensures that the storage is available to the pod as requested, maintaining it even if the pod is removed or rescheduled elsewhere in the cluster.
+
+```
+Manifest example 1
+```
+
+```
+Manifest example 2
+```
