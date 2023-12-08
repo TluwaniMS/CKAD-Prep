@@ -33,7 +33,7 @@ spec:
 ```
 
 apiVersion: batch/v1
-kind: Job
+kind: CronJob
 metadata:
     name: hello-world-cron-job
 spec:

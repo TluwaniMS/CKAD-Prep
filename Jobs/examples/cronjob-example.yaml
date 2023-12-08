@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cronjob-example
+spec:
+  schedule: : "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: job-runner
+            image: busybox:stable
+            command: ["echo","Screaming Hello from the cron job :)!!"]
+          restartPolicy: Never
+      backOffLimit: 4
+      activeDeadlineSeconds: 10
