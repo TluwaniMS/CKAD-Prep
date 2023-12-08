@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sidecar-container-test
+spec:
+  containers:
+    - name: main-container
+      image: busybox:stable
+    - name: sidecar-container
+      image: busybox:stable
