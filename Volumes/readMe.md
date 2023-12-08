@@ -5,11 +5,39 @@ In Kubernetes, a volume is a directory accessible to containers in a pod. It is 
 Volumes enable data to be shared between containers in a pod or stored persistently across pod restarts or rescheduling. They play a crucial role in maintaining stateful applications by ensuring that data persists and remains accessible to pods or containers within a Kubernetes cluster.
 
 ```
-Manifest example 1
+apiVersion: v1
+kind: Pod
+metadata:
+    name: volume-hostpath-test
+spec:
+    containers:
+    - name: busybox
+      image: busybox:stable
+      volumeMounts:
+      - name: host-data
+        mountPath: /data
+    volumes:
+    - name: host-data
+      hostPath:
+        path: /etc/hostPath
+        type: Directory
 ```
 
 ```
-Manifest example 2
+apiVersion: v1
+kind: Pod
+metadata:
+    name: empty-dir-test
+spec:
+    containers:
+    - name: busybox
+      image: busybox:stable
+      volumeMounts:
+      - name: empty-dir
+        mountPath: /data
+    volumes:
+    - name: empty-dir
+      emptyDir: {}
 ```
 
 * The Pod spec's `volumes` field specifies information regarding the volumes employed within the Pod.
