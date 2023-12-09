@@ -64,9 +64,35 @@ This persistent volume can be attached or detached from different Pods as needed
 Think of a Kubernetes persistent volume claim as a request for storage by a pod. It's like asking Kubernetes to provide a specific amount and type of storage (like a hard drive) that your application running in the pod needs. Once requested and approved, Kubernetes ensures that the storage is available to the pod as requested, maintaining it even if the pod is removed or rescheduled elsewhere in the cluster.
 
 ```
-Manifest example 1
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+    name: hostpath-pv
+spec:
+    capacity:
+        storage: 1Gi
+    accessMode:
+    - ReadWriteOnce
+    storageClassName: pv-class
+    hostPath:
+        path: /etc/hostPath
+        type: Directory
 ```
 
 ```
-Manifest example 2
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: hostpath-pvc
+spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+        requests:
+            storage: 200Mi
+    storageClassName: slow
+```
+
+```
+
 ```
