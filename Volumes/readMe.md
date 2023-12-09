@@ -92,6 +92,27 @@ spec:
             storage: 200Mi
     storageClassName: slow
 ```
+#### * accessMode:
+
+
+In the context of `Persistent Volumes` (PVs) in Kubernetes or similar systems, an access mode refers to the way a volume can be accessed by a node (or multiple nodes) that are using it within a cluster. It essentially defines the level of access permitted to that volume by the nodes.
+
+There are typically three access modes:
+
+* ReadWriteOnce (RWO): 
+
+This mode allows the volume to be mounted as read-write by a single node. It means that only one node within the cluster can read from and write to this volume at any given time.
+
+* ReadOnlyMany (ROX): 
+
+This mode permits multiple nodes within the cluster to mount the volume in read-only mode. They can read data from the volume but cannot make any modifications or write to it.
+
+* ReadWriteMany (RWX): 
+
+This mode enables multiple nodes within the cluster to mount the volume as both readable and writable. This allows multiple nodes to concurrently read from and write to the same volume.
+
+The choice of access mode depends on the specific requirements of your application and how you intend to use the persistent storage within your Kubernetes or similar cluster.
+
 
 ```
 apiVersion: v1
