@@ -94,5 +94,19 @@ spec:
 ```
 
 ```
-
+apiVersion: v1
+kind: Pod
+metadata:
+    name: pv-pod-test
+spec:
+    containers:
+    - name: busybox
+      image: busybox:stable
+      volumeMounts:
+      - name: pv-host-data
+        mountPath: /data
+    volumes:
+    - name: pv-host-data
+      persistentVolumeClaim:
+        claimName: hostpath-pvc
 ```
