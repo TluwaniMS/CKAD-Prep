@@ -93,3 +93,47 @@ The schedule field uses a cron expression to define this timing. In the provided
 - The fifth asterisk represents days of the week.
 
 So, "*/1 * * * *" means "run this job every minute."
+
+# Practical examples:
+
+#### Active dead line seconds:
+
+Create the active-dead-line-seconds job example:
+
+```
+kubectl apply -f *.yaml
+```
+
+Retrieve the jobs running in  the cluster:
+
+```
+kubectl get jobs
+```
+
+Get the job logs of the active-deadline-seconds-example resource:
+
+```
+kubectl logs *
+```
+
+
+#### backoff limit:
+
+Create the back-off-limit job example:
+
+```
+kubectl apply -f *.yaml
+```
+
+Retrieve the jobs running in  the cluster:
+
+```
+kubectl get jobs
+```
+
+Get the job logs of the back-off-limit-example resource:
+
+```
+kubectl logs *
+```
+
