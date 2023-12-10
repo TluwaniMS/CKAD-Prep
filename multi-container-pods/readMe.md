@@ -38,3 +38,31 @@ Acting as an intermediary between the main container and external services.
 Handling encryption/decryption, authentication, or authorization tasks.
 
 This pattern promotes flexibility and scalability in Kubernetes deployments, allowing easy addition or removal of sidecar containers to adapt to changing requirements without altering the primary application's codebase.
+
+# Practical examples:
+
+#### Init container example:
+
+Create the init container resource exmaple
+
+```
+kubectl apply -f /examples/*.yaml
+```
+
+Check the pod status
+
+```
+kubectl get pod <pod-name>
+```
+
+Check the init container logs
+
+```
+kubectl logs <pod-name> -c <container-name>
+```
+
+Check the main container logs
+
+```
+kubectl logs <pod-name> -c <container-name>
+```
