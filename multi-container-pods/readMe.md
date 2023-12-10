@@ -46,25 +46,25 @@ This pattern promotes flexibility and scalability in Kubernetes deployments, all
 Create the init container resource exmaple
 
 ```
-kubectl apply -f /examples/*.yaml
+kubectl apply -f /examples/init-container-example.yaml
 ```
 
 Check the pod status
 
 ```
-kubectl get pod <pod-name>
+kubectl get pod init-container-test
 ```
 
 Check the init container logs
 
 ```
-kubectl logs <pod-name> -c <container-name>
+kubectl logs init-container-test -c init-container
 ```
 
 Check the main container logs
 
 ```
-kubectl logs <pod-name> -c <container-name>
+kubectl logs init-container-test -c displayer-container
 ```
 
 #### Sidecar container example:
@@ -72,23 +72,23 @@ kubectl logs <pod-name> -c <container-name>
 Create the sidecar container resource exmaple
 
 ```
-kubectl apply -f /examples/*.yaml
+kubectl apply -f /examples/side-car-container-example.yaml
 ```
 
 Check the pod status
 
 ```
-kubectl get pod <pod-name>
+kubectl get pod sidecar-container-test
 ```
 
 Check the sidecar container logs
 
 ```
-kubectl logs <pod-name> -c <container-name>
+kubectl logs sidecar-container-test -c sidecar-container
 ```
 
 Check the main container logs
 
 ```
-kubectl logs <pod-name> -c <container-name>
+kubectl logs sidecar-container-test -c main-container
 ```
