@@ -137,3 +137,16 @@ Get the job logs of the back-off-limit-example resource:
 kubectl logs *
 ```
 
+#### Cronjob:
+
+Create the Cronjob example
+
+```
+kubectl apply -f *.yaml
+```
+
+Retrieve the Cronjobs that ran in  the cluster:
+
+```
+kubectl get cronjob
+```
