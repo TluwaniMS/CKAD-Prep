@@ -66,3 +66,29 @@ Check the main container logs
 ```
 kubectl logs <pod-name> -c <container-name>
 ```
+
+#### Sidecar container example:
+
+Create the sidecar container resource exmaple
+
+```
+kubectl apply -f /examples/*.yaml
+```
+
+Check the pod status
+
+```
+kubectl get pod <pod-name>
+```
+
+Check the sidecar container logs
+
+```
+kubectl logs <pod-name> -c <container-name>
+```
+
+Check the main container logs
+
+```
+kubectl logs <pod-name> -c <container-name>
+```
