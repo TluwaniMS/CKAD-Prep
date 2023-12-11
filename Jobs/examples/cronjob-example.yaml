@@ -13,5 +13,5 @@ spec:
             image: busybox:stable
             command: ["echo","Screaming Hello from the cron job :)!!"]
           restartPolicy: Never
-      backOffLimit: 4
+      backoffLimit: 4
       activeDeadlineSeconds: 10

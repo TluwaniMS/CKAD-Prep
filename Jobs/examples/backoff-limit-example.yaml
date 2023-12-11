@@ -13,5 +13,5 @@ spec:
             - echo "Hello from the back-off-limiter :)!! I'll be crashing now";
               ech "deliberate crash";
       restartPolicy: Never
-  backOffLimit: 4
-  activeDeadLineSeconds: 10
+  backoffLimit: 4
+  activeDeadlineSeconds: 10

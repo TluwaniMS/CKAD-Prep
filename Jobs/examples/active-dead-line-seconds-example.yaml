@@ -6,12 +6,13 @@ spec:
   template:
     spec:
       containers:
-        - name: deadline-printer
-          image: busybox:stable
-          command: ['/bin/sh', '-c']
-          args:
-            - echo "Hello from the deadline printer :)!! I'll be be sleeping for 12 seconds now";
-              sleep 12;
+      - name: deadline-printer
+        image: busybox:stable
+        command: ['/bin/sh', '-c']
+        args:
+        - echo "Hello from the deadline printer :)!! I'll be be sleeping for 12 seconds now";
+          sleep 8;
       restartPolicy: Never
-  backOffLimit: 4
-  activeDeadLineSeconds: 10
+  backoffLimit: 4
+  activeDeadlineSeconds: 10
+
