@@ -46,7 +46,7 @@ This pattern promotes flexibility and scalability in Kubernetes deployments, all
 Create the init container resource exmaple
 
 ```
-kubectl apply -f /examples/init-container-example.yaml
+kubectl apply -f ./examples/init-container-example.yaml
 ```
 
 Check the pod status
@@ -72,7 +72,7 @@ kubectl logs init-container-test -c displayer-container
 Create the sidecar container resource exmaple
 
 ```
-kubectl apply -f /examples/side-car-container-example.yaml
+kubectl apply -f ./examples/side-car-container-example.yaml
 ```
 
 Check the pod status
