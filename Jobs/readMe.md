@@ -101,7 +101,7 @@ So, "*/1 * * * *" means "run this job every minute."
 Create the active-dead-line-seconds job resource example:
 
 ```
-kubectl apply -f /examples/active-dead-line-seconds-example.yaml
+kubectl apply -f ./examples/active-dead-line-seconds-example.yaml
 ```
 
 Retrieve the jobs running in  the cluster:
@@ -122,7 +122,7 @@ kubectl logs deadline-printer-job
 Create the back-off-limit job resource example:
 
 ```
-kubectl apply -f /examples/backoff-limit-example.yaml
+kubectl apply -f ./examples/backoff-limit-example.yaml
 ```
 
 Retrieve the jobs running in  the cluster:
@@ -142,7 +142,7 @@ kubectl logs back-off-limit-job
 Create the Cronjob resource example
 
 ```
-kubectl apply -f /examples/cronjob-example.yaml
+kubectl apply -f ./examples/cronjob-example.yaml
 ```
 
 Retrieve the Cronjobs that ran in  the cluster:
