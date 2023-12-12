@@ -150,3 +150,9 @@ Retrieve the Cronjobs that ran in  the cluster:
 ```
 kubectl get cronjob
 ```
+
+Get the job logs of the Cronjob resource:
+
+```
+kubectl logs <pod_name>
+```
