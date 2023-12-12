@@ -113,7 +113,7 @@ kubectl get jobs
 Get the job logs of the active-deadline-seconds-example resource:
 
 ```
-kubectl logs deadline-printer-job
+kubectl logs <pod_name>
 ```
 
 
@@ -134,7 +134,7 @@ kubectl get jobs
 Get the job logs of the back-off-limit-example resource:
 
 ```
-kubectl logs back-off-limit-job
+kubectl logs <pod_name>
 ```
 
 #### Cronjob:
