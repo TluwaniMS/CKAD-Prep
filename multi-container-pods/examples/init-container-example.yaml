@@ -4,8 +4,28 @@ metadata:
   name: init-container-test
 spec:
   containers:
-    - name: displayer-container
-      image: busybox:stable
+  - name: displayer-container
+    image: busybox:stable
+    command: ['/bin/sh', '-c']
+    args:
+    - echo "I'm now reading from the volume...";
+      cat /init-dir/init.txt;
+      echo "I'm done reading from the volume!";
+    volumeMounts:
+      - name: init-v
+        mountPath: /init-dir
   initContainers:
-    - name: init-container
-      image: busybox:stable
+  - name: init-container
+    image: busybox:stable
+    command: ['/bin/sh', '-c']
+    args:
+    - echo "I'm now writing to the volume...";
+      echo "hello world coming from the init container!" | tee /init-dir/init.txt;
+      echo "I'm done writing to the volume!";
+    volumeMounts:
+      - name: init-v
+        mountPath: /init-dir
+  restartPolicy: Never
+  volumes:
+    - name: init-v
+      emptyDir: {}
