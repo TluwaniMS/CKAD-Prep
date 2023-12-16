@@ -4,7 +4,22 @@ metadata:
   name: sidecar-container-test
 spec:
   containers:
-    - name: main-container
-      image: busybox:stable
-    - name: sidecar-container
-      image: busybox:stable
+  - name: main-container
+    image: busybox:stable
+    command: ['/bin/sh','-c']
+    args:
+    - echo 'Hello World!'
+    volumeMounts:
+    - name: side-v
+      mountPath: /side-v
+  - name: sidecar-container
+    image: busybox:stable
+    command: ['/bin/sh','-c']
+    args:
+    - echo 'Hello World!'
+    volumeMounts:
+    - name: side-v
+      mountPath: /side-v
+  volumes:
+  - name: side-v
+    emptyDir: {}
