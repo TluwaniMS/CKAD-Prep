@@ -8,18 +8,30 @@ spec:
     image: busybox:stable
     command: ['/bin/sh','-c']
     args:
-    - echo 'Hello World!'
+    - echo "I'm running from the main container";
+      for i in `seq 1 10`;
+      do echo "I'm writing to the side-reader the value $i";
+      echo "Added input from the main container -> $i" >> /side-dir/side-reader.txt;
+      sleep 4;
+      done;
     volumeMounts:
     - name: side-v
-      mountPath: /side-v
+      mountPath: /side-dir
   - name: sidecar-container
     image: busybox:stable
     command: ['/bin/sh','-c']
     args:
-    - echo 'Hello World!'
+    - echo "I'm running from the side-car container";
+      sleep 2;
+      for i in `seq 1 10`;
+      do echo "This is what I found in the side-reader file:";
+      cat /side-dir/side-reader.txt;
+      sleep 4;
+      done;
     volumeMounts:
     - name: side-v
-      mountPath: /side-v
+      mountPath: /side-dir
+  restartPolicy: Never
   volumes:
   - name: side-v
     emptyDir: {}
