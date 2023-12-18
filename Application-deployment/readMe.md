@@ -23,3 +23,14 @@ A Kubernetes Deployment provides instructions to Kubernetes, guiding it on creat
 * ### Show details of a specific deployment:
 
 `kubectl describe deployment <deployment-name>`
+
+## Rolling updates:
+
+Rolling updates enable Deployments to update without causing any downtime by gradually replacing existing Pod instances with new ones.
+
+* ### Update the deployments image:
+`kubectl set image deployment/<deployment-name> <container>=<image>:<tag>`
+
+OR
+
+`kubectl set image deployment <deployment-name> <container>=<image>:<tag>`
