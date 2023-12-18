@@ -48,3 +48,13 @@ OR
 * ### Check the status of a deployment rollout:
   
 `kubectl rollout status deployment/<deployment-name>`
+
+## Deployment strategy(s)
+
+* ### Blue/Green Deployment strategy:
+  
+The system operates with two production environments, blue and green, for software updates. Blue represents the current software version, while green hosts the new one. At any given moment, only one environment is active, handling all production traffic. Once the new version successfully passes tests, traffic is directed to the new environment. In case of any issues, traffic reverts to the previous version.
+
+* ### Canary deployment strategy:
+
+A canary deployment involves gradually introducing a new version of an application by directing a portion of the traffic to this new version while still maintaining the existing version for the majority of users, enabling a phased rollout before complete implementation.
