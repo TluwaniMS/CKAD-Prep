@@ -34,3 +34,17 @@ Rolling updates enable Deployments to update without causing any downtime by gra
 OR
 
 `kubectl set image deployment <deployment-name> <container>=<image>:<tag>`
+
+## Managing an update rollout:
+
+* ### Check the deployments rollout history:
+  
+`kubectl rollout history deployment/<deployment-name>`
+
+* ### Undo a deployment rollout:
+  
+`kubectl rollout undo deployment/<deployment-name>`
+
+* ### Check the status of a deployment rollout:
+  
+`kubectl rollout status deployment/<deployment-name>`
