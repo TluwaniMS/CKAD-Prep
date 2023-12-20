@@ -29,3 +29,60 @@ Initiates an HTTP GET request to the Pod's IP address at a specified port and pa
 * ### tcpSocket:
 Conducts a TCP check against the Pod's IP address on a specified port.
 	
+
+
+## Configuring Probes:
+
+Example manifests.
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: goproxy
+  labels:
+    app: goproxy
+spec:
+  containers:
+  - name: goproxy
+    image: registry.k8s.io/goproxy:0.1
+    ports:
+    - containerPort: 8080
+    readinessProbe:
+      tcpSocket:
+        port: 8080
+      initialDelaySeconds: 15
+      periodSeconds: 10
+    livenessProbe:
+      tcpSocket:
+        port: 8080
+      initialDelaySeconds: 15
+      periodSeconds: 10
+
+```
+
+## Probe fields:
+
+* ### initialDelaySeconds: 
+
+The duration in seconds after the container begins running before the system starts the startup, liveness, or readiness probes.
+
+* ### periodSeconds: 
+
+The frequency, measured in seconds, at which the probe is performed.
+
+* ### timeoutSeconds: 
+
+The maximum duration in seconds allowed for the probe to complete before timing out.
+
+* ### successThreshold: 
+
+The minimum number of consecutive successful probe attempts required for the probe to be marked as successful after a previous failur
+
+* ### failureThreshold: 
+
+When a probe fails a certain number of consecutive times (defined by failureThreshold), Kubernetes deems the overall check as unsuccessful.
+
+* ### terminationGracePeriodSeconds: 
+
+This setting configures a period of time for the kubelet to wait between initiating the shutdown of a failed container and forcibly stopping that container via the container runtime.
