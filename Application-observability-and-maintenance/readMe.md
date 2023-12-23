@@ -86,3 +86,34 @@ When a probe fails a certain number of consecutive times (defined by failureThre
 * ### terminationGracePeriodSeconds: 
 
 This setting configures a period of time for the kubelet to wait between initiating the shutdown of a failed container and forcibly stopping that container via the container runtime.
+
+
+# Monitoring Kubernetes Applications
+
+## What is monitoring?
+Monitoring involves collecting metrics to track the performance of your applications running within containers.
+
+## Metrics server:
+The Kubernetes Metrics Server serves as a comprehensive collector of resource utilization data across the cluster. It gathers resource metrics from the kubelet on individual worker nodes and makes them accessible via the Kubernetes Metrics API within the Kubernetes API server.
+
+### Installing the metrics server:
+
+```
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+```
+
+## Kubectl top:
+
+The kubectl top command in Kubernetes allows users to retrieve real-time resource usage statistics for CPU and memory across various resources in the cluster. When you execute kubectl top, it communicates with the Metrics Server to gather information.
+
+### Show metrics for a given node:
+
+`kubectl top node <node-name>`
+
+### Show metrics for a given pod and its containers:
+
+`kubectl top pod <pod-name> --containers  <container-name>`
+
+### Show metrics for a given pod and sort it by 'cpu' or 'memory':
+
+`kubectl top pod <pod-name> --sort-by=cpu`
