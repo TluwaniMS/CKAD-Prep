@@ -48,77 +48,79 @@ spec:
 
 #### Custom Resource Definition Manifest Walk Through:
 
+* The name should follow the following format: `<plural>.<group>`
+
 ```
 metadata:
     name: comic.super.heroes
 ```
 
-The name should follow the following format: `<plural>.<group>`
+* The group name to use for REST API: `/apis/<group>/<version>`
 
 ```
 group: super.heroes
 ```
 
-The group name to use for REST API: `/apis/<group>/<version>`
+* Defines the names used to identify this custom resource.
 
 ```
 names:
 ```
 
-Defines the names used to identify this custom resource.
+* The plural name to be used in the URL: `/apis/<group>/<version>/<plural>`
 
 ```
 plural: comeros
 ```
 
-The plural name to be used in the URL: `/apis/<group>/<version>/<plural>`
+* The singular name to be used as an alias on the CLI and for display
 
 ```
 singular: comero
 ```
 
-The singular name to be used as an alias on the CLI and for display
+* This refers to the kind of resource used in Kubernetes manifests, to identify your resource.
 
 ```
 kind: ComicHero
 ```
 
-This refers to the kind of resource used in Kubernetes manifests, to identify your resource.
+* shortNames allow shorter string to match your resource on the CLI
 
 ```
 shortNames:
 - cmr
 ```
 
-shortNames allow shorter string to match your resource on the CLI
+* Defines the scope of the resource.
 
 ```
 scope: NameSpaced
 ```
 
-Defines the scope of the resource.
+* Describes the versions of this custom resource.
 
 ```
 versions:
 ```
 
-Describes the versions of this custom resource.
+* Served indicates whether this version should be served via the API server or not.
 
 ```
 served: true
 ```
 
-Served indicates whether this version should be served via the API server or not.
+* Storage indicates whether resources of this version should be persisted or not. 
 
 ```
 storage: true
 ```
 
-Storage indicates whether resources of this version should be persisted or not. 
+* Defines the OpenAPI v3 schema for validation of this version of the custom resource.
 
 ```
 schema
 ```
 
-Defines the OpenAPI v3 schema for validation of this version of the custom resource.
+
 
