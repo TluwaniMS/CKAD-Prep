@@ -122,5 +122,17 @@ storage: true
 schema
 ```
 
+#### Custom Resource Example:
 
+```
+
+apiVersion: super.heroes/v1
+kind: ComicHero
+metadata:
+    name: dombo
+spec:
+    hero: Changamire
+    comic: Barodzwi
+
+```
 
