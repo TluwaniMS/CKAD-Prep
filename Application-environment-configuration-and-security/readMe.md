@@ -136,3 +136,8 @@ spec:
 
 ```
 
+## Service Accounts
+
+A ServiceAccount establishes an identity for the operations carried out by processes within a Pod.
+
+Processes within a Pod have the ability to employ the identity linked to their corresponding service account for authentication towards the cluster's API server.
