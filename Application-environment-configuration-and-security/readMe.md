@@ -243,39 +243,47 @@ roleRef:
 *  Defines the subjects to which the Role is bound.
 
 ```
+subjects:
 ```
 
 * Specifies the kind of the subject being bound.
 
 ```
+- kind: ServiceAccount
 ```
 
 * Specifies the name of the ServiceAccount.
 
 ```
+name: service-account-name
 ```
 
 * Specifies the namespace in which the ServiceAccount resides.
 
 ```
+namespace: default
 ```
 
 * Specifies the Role being referenced and bound to the subjects.
 
 ```
+roleRef:
 ```
 
 * Indicates the kind of resource to which the RoleBinding refers. 
 
 ```
+Kind: Role
 ```
 
 * Specifies the name of the Role to be bound.
 
 ```
+name: list-pods-role
 ```
 
 * Indicates the API group to which the referenced Role belongs.
 
 ```
+apiGroup: rbac.authorization.k8s.io
 ```
