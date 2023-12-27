@@ -177,3 +177,37 @@ spec:
 ## Kubernetes RBAC
 
 Within Kubernetes, ClusterRoles and Roles establish the permissions granted to users within a cluster or a namespace, respectively. These permissions can be assigned to various Kubernetes subjects such as users, groups, or service accounts using role bindings and cluster role bindings.
+
+#### Kubernetes Role example:
+
+```
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+    name: list-pods-role
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["list"]
+
+```
+
+#### Kubernetes Role binding example:
+
+```
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+    name: list-pods-rb
+subjects:
+- kind: ServiceAccount
+  name: service-account-name
+  namespace: default
+roleRef:
+  Kind: Role
+  name: list-pods-role
+  apiGroup: rbac.authorization.k8s.io
+
+```
