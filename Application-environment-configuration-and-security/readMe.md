@@ -172,3 +172,8 @@ spec:
     .....
 
 ```
+
+
+## Kubernetes RBAC
+
+Within Kubernetes, ClusterRoles and Roles establish the permissions granted to users within a cluster or a namespace, respectively. These permissions can be assigned to various Kubernetes subjects such as users, groups, or service accounts using role bindings and cluster role bindings.
