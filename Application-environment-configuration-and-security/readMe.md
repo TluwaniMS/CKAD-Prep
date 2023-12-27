@@ -237,3 +237,45 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 
 ```
+
+#### kubernetes RoleBinding manifest walk through:
+
+*  Defines the subjects to which the Role is bound.
+
+```
+```
+
+* Specifies the kind of the subject being bound.
+
+```
+```
+
+* Specifies the name of the ServiceAccount.
+
+```
+```
+
+* Specifies the namespace in which the ServiceAccount resides.
+
+```
+```
+
+* Specifies the Role being referenced and bound to the subjects.
+
+```
+```
+
+* Indicates the kind of resource to which the RoleBinding refers. 
+
+```
+```
+
+* Specifies the name of the Role to be bound.
+
+```
+```
+
+* Indicates the API group to which the referenced Role belongs.
+
+```
+```
