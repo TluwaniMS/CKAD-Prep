@@ -141,3 +141,34 @@ spec:
 A ServiceAccount establishes an identity for the operations carried out by processes within a Pod.
 
 Processes within a Pod have the ability to employ the identity linked to their corresponding service account for authentication towards the cluster's API server.
+
+#### Service Account Example:
+
+```
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+    name: service-account-name
+automountServiceAccountToken: true
+
+```
+
+The `automountServiceAccountToken` field in a Kubernetes ServiceAccount manifest specifies whether to automatically mount the associated service account's credentials (token) into the running Pod's filesystem.
+
+When set to true, it enables the automatic mounting of the service account token into the default location within the Pod's filesystem. This token can then be used by processes running within the Pod to authenticate themselves to the Kubernetes API server.
+
+#### Adding service account to Pod:
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+    name: service-account-pod
+spec:
+    serviceAccountName: service-account-name
+    conatiners:
+    - name: <container-name>
+    .....
+
+```
