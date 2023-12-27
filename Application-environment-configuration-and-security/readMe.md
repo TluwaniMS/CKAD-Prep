@@ -193,6 +193,32 @@ rules:
 
 ```
 
+#### kubernetes Role Manifest walk through:
+
+* The rules describe the permissions or rules defined by this Role.
+
+```
+rules:
+```
+
+* Indicates the API groups to which the permissions apply. Here, [""] (an empty string) signifies the core Kubernetes API group.
+
+```
+apiGroups: [""]
+```
+
+* This specifies the Kubernetes resources the Role has permissions for.
+
+```
+resources: ["pods"]
+```
+
+* This defines the actions or operations permitted on the specified resources. 
+
+```
+verbs: ["list"]
+```
+
 #### Kubernetes Role binding example:
 
 ```
