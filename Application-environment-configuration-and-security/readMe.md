@@ -287,3 +287,9 @@ name: list-pods-role
 ```
 apiGroup: rbac.authorization.k8s.io
 ```
+
+## Kubernetes Admission Controllers
+
+An admission controller refers to a code segment that intercepts requests made to the Kubernetes API server before the object is stored. This interception occurs subsequent to authentication and authorization of the request.
+
+These controllers function akin to gatekeepers, possessing the capability to modify the request object or decline the request entirely.
