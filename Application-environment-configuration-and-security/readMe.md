@@ -293,3 +293,13 @@ apiGroup: rbac.authorization.k8s.io
 An admission controller refers to a code segment that intercepts requests made to the Kubernetes API server before the object is stored. This interception occurs subsequent to authentication and authorization of the request.
 
 These controllers function akin to gatekeepers, possessing the capability to modify the request object or decline the request entirely.
+
+## Managing Compute Resource Usage
+
+### Resource Quota:
+
+A ResourceQuota object establishes limitations on overall resource usage within a namespace. It regulates the number of objects allowed per type and controls the total compute resources utilized by the resources within that specific project.
+
+`NB!`
+
+In numerous Kubernetes distributions, Resource Quota support is automatically activated. This happens when the API server includes the 'ResourceQuota' as one of its arguments in the '--enable-admission-plugins=' flag.
