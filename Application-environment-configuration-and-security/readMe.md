@@ -350,6 +350,8 @@ spec:
         limits.cpu: '1'
 ```
 
+#### Example ResourceQuota manifest walk through:
+
 * Limits:
 
 define the maximum amount of resources for the namespace.
