@@ -308,7 +308,7 @@ In numerous Kubernetes distributions, Resource Quota support is automatically ac
 
 ```
 apiVersion: v1
-kind Pod
+kind: Pod
 metadata:
     name: pod-resource-management
 spec:
@@ -333,3 +333,27 @@ define the maximum amount of resources a container can use.
 * Requests:
 
 define the minimum amount of resources that should be reserved for a container.
+
+#### Example Resource Quota manifest:
+
+```
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+    name: test-resource-quota
+    namespace: test-namespace
+spec:
+    hard:
+        requests.memory: 128mi
+        requests.cpu: 500m
+        limits.memory: 256mi
+        limits.cpu: '1'
+```
+
+* Limits:
+
+define the maximum amount of resources for the namespace.
+
+* Requests:
+
+define the minimum amount of resources that should be reserved for the namespace.
