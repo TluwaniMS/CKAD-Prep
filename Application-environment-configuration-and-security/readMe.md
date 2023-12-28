@@ -303,3 +303,33 @@ A ResourceQuota object establishes limitations on overall resource usage within 
 `NB!`
 
 In numerous Kubernetes distributions, Resource Quota support is automatically activated. This happens when the API server includes the 'ResourceQuota' as one of its arguments in the '--enable-admission-plugins=' flag.
+
+#### Example Pod manifest with resource requests and limits:
+
+```
+apiVersion: v1
+kind Pod
+metadata:
+    name: pod-resource-management
+spec:
+    containers:
+    - name: busybox
+      image: busybox:stable
+      resources:
+        requests:
+            memory: 64Mi
+            cpu: 250m
+        limits:
+            memory: 128Mi
+            cpu: 500m
+```
+
+#### Example Pod manifest walk through:
+
+* Limits:
+
+define the maximum amount of resources a container can use.
+
+* Requests:
+
+define the minimum amount of resources that should be reserved for a container.
