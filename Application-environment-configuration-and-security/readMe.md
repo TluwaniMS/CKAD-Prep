@@ -359,3 +359,11 @@ define the maximum amount of resources for the namespace.
 * Requests:
 
 define the minimum amount of resources that should be reserved for the namespace.
+
+
+# Configuring Applications with ConfigMaps and Secrets
+
+## Configmap
+
+A ConfigMap is an API element designed for storing non-sensitive information in the form of key-value pairs. Pods have the capability to utilize ConfigMaps either as environment variables, command-line arguments, or configuration files within a volume.
+
