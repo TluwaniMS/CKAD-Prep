@@ -418,13 +418,13 @@ spec:
       env:
       - name: MESSAGE
       valueFrom:
-          configMapKeyRef:
-              name: <configmap-name>
-              key: <key-in-configmap>
+        configMapKeyRef:
+            name: <configmap-name>
+            key: <key-in-configmap>
       volumeMounts:
       - name: <volume-name>
-      mountPath: /config
-      readOnly: true
+        mountPath: /config
+        readOnly: true
     volumes:
     - name: <volume-name>
       configMap:
@@ -479,7 +479,7 @@ key: <key-in-configmap>
 configMap:
 ```
 
-* Specifies that the volume source is a ConfigMap.
+* The name of the ConfigMap to be used as the volume.
 
 ```
 name: <configmap-name>
@@ -506,3 +506,72 @@ path: <file/key-name>
 ## Secrets
 
 A Secret is an element designed to store small, sensitive information like passwords, tokens, or keys. It's akin to ConfigMaps but is specifically designed to securely manage confidential data.
+
+#### Secret Manifest Example:
+
+`NB!`
+
+Secret(s) data is base64-encoded.
+
+```
+apiVersion: v1
+kind: Secret
+metadata:
+    name: secret-test
+type: Opaque
+data:
+    sensitive.data: U2VjcmV0IFN0dWZmIQo=
+    password.txt: U2VjcmV0IHN0dWZmIGluIGEgZmlsZSEK
+```
+
+#### Example of Pod manifest reading from secret:
+
+```
+
+apiVersion: v1
+kind: Pod
+metadata:
+    name: secret-pod
+spec:
+    containers:
+    - name: busybox
+      image: busybox:stable
+      env:
+      - name: MESSAGE
+      valueFrom:
+          secretKeyRef:
+            name: <secret-name>
+            key: <key-in-secret>
+      volumeMounts:
+      - name: <volume-name>
+        mountPath: /secret
+        readOnly: true
+    volumes:
+    - name: <volume-name>
+      secret:
+        secretName: <secret-name>
+        items:
+        - key: <file/key-name>
+          path: <path-to-access-key>
+
+```
+
+#### Pod manifest walkthrough:
+
+* Specifies that the value of the environment variable comes from a specific key within a Secret.
+
+```
+secretKeyRef:
+```
+
+* Specifies that the volume source is a Secret.
+
+```
+secret:
+```
+
+* The name of the Secret to be used as the volume.
+
+```
+secretName: <secret-name>
+```
