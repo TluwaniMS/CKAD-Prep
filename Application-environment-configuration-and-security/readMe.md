@@ -367,3 +367,38 @@ define the minimum amount of resources that should be reserved for the namespace
 
 A ConfigMap is an API element designed for storing non-sensitive information in the form of key-value pairs. Pods have the capability to utilize ConfigMaps either as environment variables, command-line arguments, or configuration files within a volume.
 
+#### Configmap Manifest Example:
+
+```
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: test-configmap
+data:
+    instance: dev
+    app.cfg: |
+        key1=value
+        key2=value
+
+```
+
+#### Configmap Manifest walkthrough:
+
+* This section contains the actual key-value pairs that constitute the data stored within the ConfigMap.
+
+```
+data:
+```
+
+* property-like keys; each key maps to a simple value
+
+```
+instance: dev
+```
+
+* file-like keys
+
+```
+app.cfg: |
+```
