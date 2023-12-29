@@ -575,3 +575,12 @@ secret:
 ```
 secretName: <secret-name>
 ```
+
+## Kubernetes Security Context
+
+A Kubernetes security context involves a collection of security configurations implemented either at the pod or container level, allowing the specification of privileges and access controls for these pods or containers.
+
+
+
+
+
