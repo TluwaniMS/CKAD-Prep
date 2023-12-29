@@ -580,7 +580,52 @@ secretName: <secret-name>
 
 A Kubernetes security context involves a collection of security configurations implemented either at the pod or container level, allowing the specification of privileges and access controls for these pods or containers.
 
+#### Example of Pod manifest for adding security context settings:
 
+```
+apiVersion: v1
+kind: Pod
+metadata:
+    name: security-context-pod
+spec:
+    containers:
+    - name: busybox
+      image: busybox:stable
+      securityContext:
+        runAsUser: 3000
+        runAsGroup: 4000
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true 
+```
 
+#### Pod manifest walkthrough:
 
+* The securityContext section is used to configure security settings for the container
 
+```
+securityContext:
+```
+
+* Sets the UID (user identifier) that the container's process should run as to 3000.
+
+```
+runAsUser: 3000
+```
+
+*  Defines the GID (group identifier) that the container's process should run as to 4000.
+
+```
+runAsGroup: 4000
+```
+
+* Sets the UID (user identifier) that the container's process should run as to 3000.
+
+```
+allowPrivilegeEscalation: false
+```
+
+* Configures the container's root filesystem as read-only, enhancing security by preventing write access to the root file system.
+
+```
+readOnlyRootFilesystem: true 
+```
