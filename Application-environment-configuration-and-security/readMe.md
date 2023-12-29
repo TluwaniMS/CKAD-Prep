@@ -502,3 +502,7 @@ key: <file/key-name>
 ```
 path: <file/key-name>
 ```
+
+## Secrets
+
+A Secret is an element designed to store small, sensitive information like passwords, tokens, or keys. It's akin to ConfigMaps but is specifically designed to securely manage confidential data.
