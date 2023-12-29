@@ -402,3 +402,103 @@ instance: dev
 ```
 app.cfg: |
 ```
+
+#### Example of Pod manifest reading from configmap:
+
+```
+
+apiVersion: v1
+kind: Pod
+metadata:
+    name: config-pod
+spec:
+    containers:
+    - name: busybox
+      image: busybox:stable
+      env:
+      - name: MESSAGE
+      valueFrom:
+          configMapKeyRef:
+              name: <configmap-name>
+              key: <key-in-configmap>
+      volumeMounts:
+      - name: <volume-name>
+      mountPath: /config
+      readOnly: true
+    volumes:
+    - name: <volume-name>
+      configMap:
+        name: <configmap-name>
+        items:
+        - key: <file/key-name>
+          path: <path-to-access-key>
+
+```
+
+#### Pod manifest walkthrough:
+
+* Specifies environment variables for the container.
+
+```
+env:
+```
+
+* Defines an environment variable named "MESSAGE" 
+
+```
+- name: MESSAGE
+```
+
+* This specifies where the environment variable is sourced from.
+
+```
+valueFrom:
+```
+
+* Specifies that the value of the environment variable comes from a specific key within a ConfigMap.
+
+```
+configMapKeyRef:
+```
+
+* The name of the ConfigMap containing the desired key-value pair.
+
+```
+name: <configmap-name>
+```
+
+* The specific key in the ConfigMap whose value will be used for the "MESSAGE" environment variable.
+
+```
+key: <key-in-configmap>
+```
+
+* Specifies that the volume source is a ConfigMap.
+
+```
+configMap:
+```
+
+* Specifies that the volume source is a ConfigMap.
+
+```
+name: <configmap-name>
+```
+
+*  Specifies particular items from the ConfigMap to be used within the volume.
+
+```
+items:
+```
+
+* The specific key in the ConfigMap that will be used within the volume.
+
+```
+key: <file/key-name>
+```
+
+* Specifies the path within the volume where the ConfigMap key will be accessible.
+
+```
+path: <file/key-name>
+```
