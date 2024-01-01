@@ -81,3 +81,54 @@ spec:
   - Ingress
   - Egress
 ```
+
+##### Example Network Policy manifest with specific selectors for inbound traffic:
+
+```
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: np-test-client-allow
+  namespace: np-test-a
+spec: 
+  podSelector:
+    matchLabels:
+      app: np-test-server
+  policyTypes:
+  - Ingress
+  Ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          team: bteam
+      podSelector:
+        matchLabels:
+          app: np-test-client
+    ports:
+    - protocol: TCP
+      port: 80
+```
+
+##### Example Network Policy manifest with specific selectors for outbound traffic:
+
+```
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: np-test-client-allow-egress
+  namespace: np-test-b
+spec:
+  podSelector:
+    matchLabels:
+      app: np-test-client
+  policyTypes:
+  - Egress
+  Egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          team: ateam
+    ports:
+    - protocol: TCP
+      port: 80
+```
