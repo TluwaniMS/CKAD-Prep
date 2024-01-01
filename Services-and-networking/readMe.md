@@ -162,6 +162,11 @@ ports:
   port: 80
 ```
 
+
+`Summary of manifest:`
+
+This NetworkPolicy is designed to allow inbound traffic from pods labeled app: np-test-client within namespaces that have the label team: bteam, specifically on TCP port 80, and it applies to pods labeled as app: np-test-server within the "np-test-a" namespace.
+
 ##### Example Network Policy manifest with specific selectors for outbound traffic:
 
 ```
@@ -185,3 +190,19 @@ spec:
     - protocol: TCP
       port: 80
 ```
+
+* Specifies the destination for the allowed traffic. Allows traffic to pods within namespaces labeled with `team: ateam`.
+
+```
+Egress:
+- to:
+  - namespaceSelector:
+      matchLabels:
+          team: ateam
+```
+
+`Summary of manifest:`
+
+This NetworkPolicy specifically targets pods labeled as app: np-test-client within the "np-test-b" namespace. It restricts these pods' outgoing traffic (Egress) by allowing communication limited to namespaces labeled as team: ateam on TCP port 80. Essentially, it permits pods with the specified label to send TCP traffic to pods in namespaces labeled as team: ateam on port 80.
+
+
