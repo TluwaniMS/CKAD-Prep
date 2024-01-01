@@ -109,6 +109,59 @@ spec:
       port: 80
 ```
 
+##### Example Network Policy manifest with specific selectors for inbound traffic walk through:
+
+* Specifies the pods to which this policy applies. Matches pods labeled with `app: np-test-server`.
+
+```
+spec: 
+  podSelector:
+    matchLabels:
+      app: np-test-server
+```
+
+* Specifies the types of policies this NetworkPolicy applies to.
+
+```
+policyTypes:
+```
+
+* Rules for incoming traffic. Allows traffic from specific sources based on selectors and ports.
+
+```
+Ingress:
+```
+
+* Specifies the sources allowed to send traffic.
+
+```
+- from:
+```
+
+* Allows traffic from pods within namespaces that have a label team: bteam. 
+
+```
+- namespaceSelector:
+    matchLabels:
+    team: bteam
+```
+
+* Specifically allows traffic from pods labeled with app: np-test-client.
+
+```
+podSelector:
+  matchLabels:
+    app: np-test-cli
+```
+
+* Defines the ports and protocols allowed for incoming traffic.Allows TCP traffic on port 80.
+
+```
+ports:
+- protocol: TCP
+  port: 80
+```
+
 ##### Example Network Policy manifest with specific selectors for outbound traffic:
 
 ```
