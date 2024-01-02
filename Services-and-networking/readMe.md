@@ -281,3 +281,34 @@ port: 8080
 targetPort: 80
 ```
 
+##### Example Service Manifest with Nodeport example:
+
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: clusterip-service
+spec:
+  type: NodePort
+  selector:
+    app: service-server
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 80
+    nodePort: 30080
+```
+
+##### Example Service Manifest with NodePort walk through:
+
+* specifies the type of Service. In this case, it's a NodePort Service, which exposes the Service on a specific port of each selected Node in the cluster.
+
+```
+type: ClusterIP
+```
+
+* sets the specific nodePort value (30080) that allows access to this Service from outside the cluster via <NodeIP>:<NodePort>.
+
+```
+nodePort: 30080
+```
