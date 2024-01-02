@@ -312,3 +312,12 @@ type: ClusterIP
 ```
 nodePort: 30080
 ```
+
+## Ingress
+
+An ingress in Kubernetes functions as an API object facilitating external user access to services operational within a Kubernetes cluster. It allows for the establishment of routing regulations contained within the ingress resource, enabling the configuration of cluster access.
+
+`NB!`
+
+For the Ingress resource to function correctly, an active ingress controller must be operational within the cluster.
+
