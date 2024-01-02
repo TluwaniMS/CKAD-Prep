@@ -321,3 +321,23 @@ An ingress in Kubernetes functions as an API object facilitating external user a
 
 For the Ingress resource to function correctly, an active ingress controller must be operational within the cluster.
 
+#### Example of Ingress API object manifest:
+
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: ingress.test.ground
+    http: 
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service: ingress-test-service
+          port:
+            number: 80
+```
