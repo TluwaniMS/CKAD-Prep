@@ -341,3 +341,66 @@ spec:
           port:
             number: 80
 ```
+
+#### Ingress API object manifest walk through:
+
+*  specifies the class name of the Ingress, associating it with an Ingress controller named nginx. This ensures that the rules defined in this Ingress are managed by the Ingress controller named nginx.
+
+```
+ingressClassName: nginx
+```
+
+* specify the routing rules for incoming traffic
+
+```
+rules:
+```
+
+* defines the host for which the rules will apply. 
+
+```
+ - host: ingress.test.ground
+```
+
+* indicates that this Ingress handles HTTP traffic.
+
+```
+http: 
+```
+
+*  specifies the paths to match and how to route them
+
+```
+paths:
+```
+
+*  specifies the path / as the base path to match.
+
+```
+- path: /
+```
+
+*  indicates that this path should be treated as a prefix match.
+
+```
+pathType: Prefix
+```
+
+* defines the backend service to which the traffic matching the specified host and path should be sent
+
+```
+backend:
+```
+
+* Refers to the Kubernetes Service named ingress-test-service. Traffic matching the specified host and path will be forwarded to this Service.
+
+```
+service: ingress-test-service
+```
+
+* specifies that the traffic will be directed to port 80 on the ingress-test-service.
+
+```
+port:
+  number: 80
+```
