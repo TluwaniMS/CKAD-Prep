@@ -205,4 +205,18 @@ Egress:
 
 This NetworkPolicy specifically targets pods labeled as app: np-test-client within the "np-test-b" namespace. It restricts these pods' outgoing traffic (Egress) by allowing communication limited to namespaces labeled as team: ateam on TCP port 80. Essentially, it permits pods with the specified label to send TCP traffic to pods in namespaces labeled as team: ateam on port 80.
 
+## Services
+
+In Kubernetes, a Service functions as a means to make a network application, which operates within your cluster as one or more Pods, accessible to the network.
+
+### Types of Services:
+
+* ClusterIP (default):
+
+This type of Service exposes it on an internal IP within the cluster, restricting accessibility solely to within the cluster.
+
+* NodePort:
+
+By employing NAT, this Service type exposes the Service on the identical port of each chosen Node in the cluster. Consequently, it enables the Service to be reached from outside the cluster through <NodeIP>:<NodePort>, encompassing the functionalities of ClusterIP.
+
 
