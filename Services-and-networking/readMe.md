@@ -219,4 +219,65 @@ This type of Service exposes it on an internal IP within the cluster, restrictin
 
 By employing NAT, this Service type exposes the Service on the identical port of each chosen Node in the cluster. Consequently, it enables the Service to be reached from outside the cluster through <NodeIP>:<NodePort>, encompassing the functionalities of ClusterIP.
 
+##### Example Service Manifest with ClusterIp example:
+
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: clusterip-service
+spec:
+  type: ClusterIP
+  selector:
+    app: service-server
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 80
+```
+
+##### Example Service Manifest with ClusterIp walk through:
+
+*  Specifies the desired state for the Service.
+
+```
+spec:
+```
+
+* Defines the type of Service. Here, it's set to "ClusterIP," which means the Service will be accessible only within the cluster.
+
+```
+type: ClusterIP
+```
+
+* Specifies a set of labels used to identify the Pods to which this Service will route traffic. In this case, the Service will route traffic to Pods labeled with "app: service-server".
+
+```
+selector:
+  app: service-server
+```
+
+* Describes the ports that the Service will listen on and how it will route traffic to the Pods.
+
+```
+ports:
+```
+
+* Specifies the protocol used for the port. In this case, it's set to TCP.
+
+```
+protocol: TCP
+```
+
+* Defines the port on which the Service will be accessible within the cluster. Incoming traffic on port 8080 will be directed to this Service.
+
+```
+port: 8080
+```
+
+* Specifies the port on the Pods to which the incoming traffic will be forwarded. Traffic arriving at port 8080 on the Service will be directed to port 80 on the Pods selected by the label selector.
+
+```
+targetPort: 80
+```
 
