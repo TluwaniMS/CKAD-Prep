@@ -15,3 +15,11 @@ OR
 `kubectl create <resource-type> <resource-name>`
 
 ## kubectl run
+
+The kubectl run command creates and rus a particular image in a pod.
+
+```
+kubectl run <pod-name> --image=image [--env="key=value"] [--port=port] [--replicas=replicas] [--dry-run=bool] [--overrides=inline-json] [--command] -- [COMMAND] [args...] [—labels="key=value"]
+```
+
+
