@@ -6,4 +6,12 @@ The kubectl tool in Kubernetes empowers you to execute commands on Kubernetes cl
 
 ## kubectl create
 
+The kubectl create command generates a resource either from a file or from standard input (stdin).
+
+`kubectl create -f FILENAME`
+
+OR
+
+`kubectl create <resource-type> <resource-name>`
+
 ## kubectl run
