@@ -417,10 +417,10 @@ spec:
       image: busybox:stable
       env:
       - name: MESSAGE
-      valueFrom:
-        configMapKeyRef:
-            name: <configmap-name>
-            key: <key-in-configmap>
+        valueFrom:
+            configMapKeyRef:
+                name: <configmap-name>
+                key: <key-in-configmap>
       volumeMounts:
       - name: <volume-name>
         mountPath: /config
@@ -538,7 +538,7 @@ spec:
       image: busybox:stable
       env:
       - name: MESSAGE
-      valueFrom:
+        valueFrom:
           secretKeyRef:
             name: <secret-name>
             key: <key-in-secret>
