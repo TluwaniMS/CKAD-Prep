@@ -649,11 +649,3 @@ spec:
                 - securityRef:
                     name: <security-name>
 ```
-
-```
-envFrom:
-- configMapRef:
-    name: <configmap-name>
-- securityRef:
-    name: <security-name>
-```
