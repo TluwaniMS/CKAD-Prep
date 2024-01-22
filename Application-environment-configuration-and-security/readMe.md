@@ -629,3 +629,31 @@ allowPrivilegeEscalation: false
 ```
 readOnlyRootFilesystem: true 
 ```
+
+#### Quick shortcut on Env and Security configuration for container:
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+    name: podder
+spec:
+    template:
+        spec:
+            containers:
+            - name: test-container
+                image: busybox/stable
+                envFrom:
+                - configMapRef:
+                    name: <configmap-name>
+                - securityRef:
+                    name: <security-name>
+```
+
+```
+envFrom:
+- configMapRef:
+    name: <configmap-name>
+- securityRef:
+    name: <security-name>
+```
