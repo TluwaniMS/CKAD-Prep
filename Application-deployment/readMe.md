@@ -59,6 +59,55 @@ A deployment strategy outlines the process for generating, updating, or revertin
 
 ```
 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: nginx-deployment
+ labels:
+   app: nginx
+spec:
+ replicas: 3
+ selector:
+   matchLabels:
+     app: nginx
+ strategy:
+   type: RollingUpdate
+   rollingUpdate:
+     maxSurge: 2
+     maxUnavailable: 1
+
+```
+
+#### Rolling Update Strategy Walk Through:
+
+*  Defines the deployment strategy.
+
+```
+strategy:
+```
+
+* Specifies that the Deployment should use a rolling update strategy.
+
+```
+type: RollingUpdate
+```
+
+* Configures the parameters for the rolling update.
+
+```
+rollingUpdate:
+```
+
+* Specifies the maximum number of Pods that can be created over the desired number of replicas during an update.
+
+```
+maxSurge:
+```
+
+* Specifies the maximum number of Pods that can be unavailable (not running) during the update.
+
+```
+maxUnavailable:
 ```
 
 * ### Blue/Green Deployment strategy:
