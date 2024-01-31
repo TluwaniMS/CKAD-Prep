@@ -51,6 +51,16 @@ OR
 
 ## Deployment strategy(s)
 
+* ### Kubernetes Rolling Updates:
+
+A deployment strategy outlines the process for generating, updating, or reverting various versions of applications. A rolling update facilitates a Deployment update without any downtime by gradually substituting the existing Pods with new ones.
+
+##### Example Manifest for Rolling Update Strategy Manifest:
+
+```
+
+```
+
 * ### Blue/Green Deployment strategy:
   
 The system operates with two production environments, blue and green, for software updates. Blue represents the current software version, while green hosts the new one. At any given moment, only one environment is active, handling all production traffic. Once the new version successfully passes tests, traffic is directed to the new environment. In case of any issues, traffic reverts to the previous version.
