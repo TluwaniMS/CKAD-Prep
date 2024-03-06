@@ -17,32 +17,34 @@ Custom Resource Definitions (CRDs) enable users to introduce and manage their cu
 ### Custom Resource Definition Example:
 
 ```
-
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
-    name: comeros.super.heroes
+  name: comeros.super.heroes
 spec:
-    group: super.heroes
-    names:
-        plural: comeros
-        singular: comero
-        kind: ComicHero
-        shortNames:
-        - cmr
-    scope: NameSpaced
-    versions:
+  group: super.heroes
+  names:
+    plural: comeros
+    singular: comero
+    kind: ComicHero
+    shortNames:
+      - cmr
+  scope: Namespaced
+  versions:
     - name: v1
       served: true
       storage: true
       schema:
         openAPIV3Schema:
-            type: object
-            properties:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
                 hero:
-                    type: string
+                  type: string
                 comic:
-                    type: string
+                  type: string
 
 ```
 
